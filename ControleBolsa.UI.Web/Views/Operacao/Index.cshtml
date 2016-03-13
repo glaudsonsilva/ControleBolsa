@@ -1,13 +1,9 @@
 ﻿@model IEnumerable<ControleBolsa.Models.Operacao>
 
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
+<h2>Operações</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nova Operação", "Cadastrar")
 </p>
 <table class="table">
     <tr>
@@ -26,26 +22,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Papel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cotacao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataHora)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Papel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cotacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHora)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -1,15 +1,41 @@
-﻿using ControleBolsa.Services;
+﻿using ControleBolsa.Domain;
+using ControleBolsa.Services;
 using System.Web.Mvc;
 
 namespace ControleBolsa.UI.Web.Controllers
 {
     public class OperacaoController : Controller
     {
+        OperacaoService Service;
+
+        public OperacaoController()
+        {
+            this.Service = new OperacaoService();
+        }
         public ActionResult Index()
         {
-            var service = new OperacaoService();
+            return View(this.Service.ObterOperacoes());
+        }
 
-            return View(service.ObterOperacoes());
+        [HttpGet]
+        public ActionResult Cadastrar()
+        {
+            return View();
+        }
+
+        public ActionResult Cadastrar(Models.Operacao operacao)
+        {
+            this.Service.CadastrarOperacao(operacao);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Carteira()
+        {
+            var carteira = this.Service.ObterCarteira();
+
+            return View(carteira);
         }
     }
 }

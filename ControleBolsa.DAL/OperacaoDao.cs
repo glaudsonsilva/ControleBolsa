@@ -1,9 +1,6 @@
 ﻿using ControleBolsa.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq; 
 
 namespace ControleBolsa.DAL
 {
@@ -20,6 +17,17 @@ namespace ControleBolsa.DAL
             }
 
             return operacoes;
+        }
+
+
+        public void Cadastrar(Models.Operacao operacao)
+        {
+            using (var db = new Context())
+            {
+                db.Operacoes.Add(operacao);
+
+                db.SaveChanges();
+            }
         }
     }
 }

@@ -1,0 +1,47 @@
+﻿@model ControleBolsa.Models.Carteira
+
+@{
+    ViewBag.Title = "Carteira";
+}
+
+<h2>Carteira</h2>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Papel
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Preço médio
+            </th>
+        </tr>
+        @foreach (var item in Model.Posicoes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Papel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecoMedio)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Percentual)
+                </td>*@
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Total: @Model.Posicoes.Sum(x => x.Total)</td>
+        </tr>
+    </table>
+
+    <dl class="dl-horizontal"></dl>
+</div> 
